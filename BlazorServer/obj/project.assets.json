@@ -12089,11 +12089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj",
+      "projectUniqueName": "E:\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
       "projectName": "BlazorServer",
-      "projectPath": "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj",
+      "projectPath": "E:\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "E:\\SaveGit\\BlazorServer\\obj\\",
+      "outputPath": "E:\\Blazor-SignalR-Net7\\BlazorServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -88,7 +88,7 @@
         {
             persons = await personService.GetAllAsync();
             await hubContext.Clients.All.SendAsync("ReceivePersons", persons);
-            StateHasChanged(); // Luu data thay doi 
+            StateHasChanged(); // Luu data da thay doi
             Console.WriteLine("Data loaded successfully.");
         }
         catch (Exception ex)

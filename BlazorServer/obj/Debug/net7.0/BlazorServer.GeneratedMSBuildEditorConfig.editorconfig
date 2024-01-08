@@ -9,75 +9,75 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorServer
 build_property.RootNamespace = BlazorServer
-build_property.ProjectDir = E:\SaveGit\BlazorServer\
+build_property.ProjectDir = E:\Blazor-SignalR-Net7\BlazorServer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\SaveGit\BlazorServer
+build_property.MSBuildProjectDirectory = E:\Blazor-SignalR-Net7\BlazorServer
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/SaveGit/BlazorServer/App.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/AddUpdatePerson.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/AddUpdatePerson.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVXBkYXRlUGVyc29uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/Counter.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/FetchData.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/Index.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/Persons.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/Persons.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/ProductComponent.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/ProductComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Shared/LoginDisplay.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Shared/SurveyPrompt.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/_Imports.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Shared/MainLayout.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-mxoy4q7bj7
 
-[E:/SaveGit/BlazorServer/Shared/NavMenu.razor]
+[E:/Blazor-SignalR-Net7/BlazorServer/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-9s0xq2xzhp
 
-[E:/SaveGit/BlazorServer/Areas/Identity/Pages/Account/LogOut.cshtml]
+[E:/Blazor-SignalR-Net7/BlazorServer/Areas/Identity/Pages/Account/LogOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dPdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+[E:/Blazor-SignalR-Net7/BlazorServer/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/Error.cshtml]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SaveGit/BlazorServer/Pages/_Host.cshtml]
+[E:/Blazor-SignalR-Net7/BlazorServer/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

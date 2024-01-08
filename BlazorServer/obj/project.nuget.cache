@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KUvJoboyzvWRWV5saI1EgjGb4etXedtwyycCkqTsUzG356WYGzE43zIGIs+mzcu1ohZ8Go/JEgd9PYTx5TW8dQ==",
+  "dgSpecHash": "tdya413P2keM4ngKJyiMkp2bB15Pc7dWEhRusmA2Q9Hp5du0b0kIhPlZ6sRHolMB7DbuuvQTMXGN2EFKU4gMmg==",
   "success": true,
-  "projectFilePath": "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj",
+  "projectFilePath": "E:\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
