@@ -37,6 +37,10 @@ namespace BlazorServer
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                       new[] { "application/octet-stream" });
             });
+            builder.Services.AddBlazorBootstrap();
+
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
