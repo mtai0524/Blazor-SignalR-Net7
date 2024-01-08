@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Blazor-Server-Net7-main\\Blazor-Server-Net7-main\\BlazorServer\\BlazorServer\\BlazorServer.csproj": {}
+    "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj": {}
   },
   "projects": {
-    "E:\\Blazor-Server-Net7-main\\Blazor-Server-Net7-main\\BlazorServer\\BlazorServer\\BlazorServer.csproj": {
+    "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Blazor-Server-Net7-main\\Blazor-Server-Net7-main\\BlazorServer\\BlazorServer\\BlazorServer.csproj",
+        "projectUniqueName": "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj",
         "projectName": "BlazorServer",
-        "projectPath": "E:\\Blazor-Server-Net7-main\\Blazor-Server-Net7-main\\BlazorServer\\BlazorServer\\BlazorServer.csproj",
+        "projectPath": "E:\\SaveGit\\BlazorServer\\BlazorServer.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\Blazor-Server-Net7-main\\Blazor-Server-Net7-main\\BlazorServer\\BlazorServer\\obj\\",
+        "outputPath": "E:\\SaveGit\\BlazorServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
