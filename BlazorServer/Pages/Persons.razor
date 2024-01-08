@@ -1,0 +1,99 @@
+﻿@page "/persons"
+@using BlazorCrud.Services
+@using BlazorServer.Data
+@using BlazorServer.Models
+@using Microsoft.AspNetCore.SignalR
+@inject IPersonService personService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavigationManager
+@inject IHubContext<PersonHub> hubContext
+<h3>Persons</h3>
+<a href="/person/add" class="btn btn-outline-dark my-2">Add more</a>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in persons)
+                {
+                    <tr>
+                        <td>@person.Name</td>
+                        <td>@person.Email</td>
+                        <td>
+                            <a href="/person/edit/@person.Id" class="btn btn-success">Edit</a>
+                            <a class="btn btn-danger" @onclick="async ()=> await Delete(person)">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<Person> persons = new();
+    private HubConnection hubConnection;
+
+    private async Task Delete(Person person)
+    {
+        bool confirmed = await jsRuntime.InvokeAsync<bool>("confirm", "Are you sure????");
+        if (confirmed)
+        {
+            if (personService.Delete(person.Id))
+            {
+                persons.Remove(person);
+                await hubContext.Clients.All.SendAsync("ReceivePersons", persons);
+            }
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/personhub"))
+            .Build();
+
+        hubConnection.On<List<Person>>("ReceivePersons", receivedPersons =>
+        {
+            InvokeAsync(() =>
+            {
+                persons = receivedPersons;
+                StateHasChanged();
+            });
+        });
+
+        try
+        {
+            await hubConnection.StartAsync();
+            Console.WriteLine("SignalR connection started successfully.");
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error starting SignalR connection: {ex.Message}");
+        }
+
+        await base.OnInitializedAsync();
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            persons = await personService.GetAllAsync();
+            await hubContext.Clients.All.SendAsync("ReceivePersons", persons);
+            StateHasChanged(); // Ensure the state is changed after initial data load
+            Console.WriteLine("Data loaded successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading data: {ex.Message}");
+        }
+    }
+}
