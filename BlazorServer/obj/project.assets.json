@@ -12571,11 +12571,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
+      "projectUniqueName": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
       "projectName": "BlazorServer",
-      "projectPath": "E:\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
+      "projectPath": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "E:\\Blazor-SignalR-Net7\\BlazorServer\\obj\\",
+      "outputPath": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

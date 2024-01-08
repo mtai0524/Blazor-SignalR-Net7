@@ -1,63 +1,63 @@
 {
   "Files": [
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorServer.bundle.scp.css",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorServer.bundle.scp.css",
       "PackagePath": "staticwebassets\\BlazorServer.bundle.scp.css"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\README.md",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\README.md",
       "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\site.css",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\favicon.png",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "E:\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "Id": "E:\\BlazorBoostrap\\Blazor-SignalR-Net7\\BlazorServer\\wwwroot\\microsoft\\signalr\\dist\\browser\\signalr.js",
       "PackagePath": "staticwebassets\\microsoft\\signalr\\dist\\browser\\signalr.js"
     },
     {

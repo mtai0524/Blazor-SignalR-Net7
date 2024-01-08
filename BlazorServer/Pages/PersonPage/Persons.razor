@@ -10,7 +10,8 @@
 <h3>Persons</h3>
 <a href="/person/add" class="btn btn-outline-dark my-2">Add more</a>
 <div class="row">
-
+    <Toasts Style="margin-top:10px"  class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
+    <ConfirmDialog @ref="dialog" />
    @*  <p>
         <Button Color="ButtonColor.Danger" Loading="isLoadingData">
             <LoadingTemplate>
@@ -19,46 +20,144 @@
             </LoadingTemplate>
         </Button>
     </p> *@
-    <div class="col-md-6">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Button</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var person in persons)
-                {
-                    <tr>
-                        <td>@person.Name</td>
-                        <td>@person.Email</td>
-                        <td>
-                            <a href="/person/edit/@person.Id" class="btn btn-info">Edit</a>
-                            <a class="btn btn-danger" @onclick="async ()=> await Delete(person)">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+ <Grid TItem="Employee1"
+      Class="table table-hover table-bordered table-striped"
+      DataProvider="EmployeesDataProvider"
+      AllowFiltering="true"
+      AllowPaging="true"
+      PageSize="5"
+      AllowSorting="true"
+      AllowSelection="true"
+      SelectionMode="GridSelectionMode.Multiple"
+      SelectedItemsChanged="OnSelectedItemsChanged"
+      Responsive="true">
+
+    <GridColumn TItem="Employee1" HeaderText="Id" PropertyName="Id" SortKeySelector="item => item.Id">
+        @context.Id
+    </GridColumn>
+    <GridColumn TItem="Employee1" HeaderText="Employee Name" PropertyName="Name" SortKeySelector="item => item.Name">
+        @context.Name
+    </GridColumn>
+    <GridColumn TItem="Employee1" HeaderText="Designation" PropertyName="Designation" SortKeySelector="item => item.Designation">
+        @context.Designation
+    </GridColumn>
+    <GridColumn TItem="Employee1" HeaderText="DOJ" PropertyName="DOJ" SortKeySelector="item => item.DOJ">
+        @context.DOJ
+    </GridColumn>
+    <GridColumn TItem="Employee1" HeaderText="Active" PropertyName="IsActive" SortKeySelector="item => item.IsActive">
+        @context.IsActive
+    </GridColumn>
+
+</Grid>
 </div>
 
 @code {
+    private IEnumerable<Employee1> employees = default!;
+
+    private HashSet<Employee1> selectedEmployees = new();
+
+    private async Task<GridDataProviderResult<Employee1>> EmployeesDataProvider(GridDataProviderRequest<Employee1> request)
+    {
+        if (employees is null) // pull employees only one time for client-side filtering, sorting, and paging
+            employees = GetEmployees(); // call a service or an API to pull the employees
+
+        return await Task.FromResult(request.ApplyTo(employees));
+    }
+
+    private IEnumerable<Employee1> GetEmployees()
+    {
+        return new List<Employee1>
+        {
+            new Employee1 { Id = 107, Name = "Alice", Designation = "AI Engineer", DOJ = new DateOnly(1998, 11, 17), IsActive = true },
+            new Employee1 { Id = 103, Name = "Bob", Designation = "Senior DevOps Engineer", DOJ = new DateOnly(1985, 1, 5), IsActive = true },
+            new Employee1 { Id = 106, Name = "John", Designation = "Data Engineer", DOJ = new DateOnly(1995, 4, 17), IsActive = true },
+            new Employee1 { Id = 104, Name = "Pop", Designation = "Associate Architect", DOJ = new DateOnly(1985, 6, 8), IsActive = false },
+            new Employee1 { Id = 105, Name = "Ronald", Designation = "Senior Data Engineer", DOJ = new DateOnly(1991, 8, 23), IsActive = true },
+            new Employee1 { Id = 102, Name = "Line", Designation = "Architect", DOJ = new DateOnly(1977, 1, 12), IsActive = true },
+            new Employee1 { Id = 101, Name = "Daniel", Designation = "Architect", DOJ = new DateOnly(1977, 1, 12), IsActive = true },
+            new Employee1 { Id = 113, Name = "Merlin", Designation = "Senior Consultant", DOJ = new DateOnly(1989, 10, 2), IsActive = true },
+            new Employee1 { Id = 117, Name = "Sharna", Designation = "Data Analyst", DOJ = new DateOnly(1994, 5, 12), IsActive = true },
+            new Employee1 { Id = 108, Name = "Zayne", Designation = "Data Analyst", DOJ = new DateOnly(1991, 1, 1), IsActive = true },
+            new Employee1 { Id = 109, Name = "Isha", Designation = "App Maker", DOJ = new DateOnly(1996, 7, 1), IsActive = true },
+            new Employee1 { Id = 111, Name = "Glenda", Designation = "Data Engineer", DOJ = new DateOnly(1994, 1, 12), IsActive = true },
+        };
+    }
+
+    private Task OnSelectedItemsChanged(HashSet<Employee1> employees)
+    {
+        selectedEmployees = employees is not null && employees.Any() ? employees : new();
+        return Task.CompletedTask;
+    }
+
+    private ConfirmDialog dialog;
+
+    private async Task ShowSaveConfirmationAsync()
+    {
+        var options = new ConfirmDialogOptions
+            {
+                YesButtonText = "OK",
+                YesButtonColor = ButtonColor.Success,
+                NoButtonText = "CANCEL",
+                NoButtonColor = ButtonColor.Danger
+            };
+
+        var confirmation = await dialog.ShowAsync(
+            title: "Simple Confirm Dialog",
+            message1: "Do you want to proceed?",
+            confirmDialogOptions: options);
+
+        if (confirmation)
+        {
+            // do whatever
+        }
+        else
+        {
+            // do whatever
+        }
+    }
+
+
+
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+
+    private ToastMessage CreateToastMessage(ToastType toastType, string message)
+        => new ToastMessage
+            {
+                Type = toastType,
+                Title = "Thông báo chút",
+                HelpText = $"{DateTime.Now}",
+                Message = $"{message}",
+            };
+
+
     private List<Person> persons = new();
     private HubConnection hubConnection;
     private bool isLoadingData = true; // cho loading
     [Inject] protected PreloadService PreloadService { get; set; }
     private async Task Delete(Person person)
     {
-        bool confirmed = await jsRuntime.InvokeAsync<bool>("confirm", "Are you sure????");
-        if (confirmed)
+        var options = new ConfirmDialogOptions
+            {
+                YesButtonText = "OK",
+                YesButtonColor = ButtonColor.Success,
+                NoButtonText = "CANCEL",
+                NoButtonColor = ButtonColor.Danger
+            };
+
+        var confirmation = await dialog.ShowAsync(
+            title: "Simple Confirm Dialog",
+            message1: "Do you want to proceed?",
+            confirmDialogOptions: options);
+
+        if (confirmation)
         {
             if (personService.Delete(person.Id))
             {
                 persons.Remove(person);
                 await hubContext.Clients.All.SendAsync("ReceivePersons", persons);
+                ShowMessage(ToastType.Info, "Xóa gòi nha");
             }
         }
     }

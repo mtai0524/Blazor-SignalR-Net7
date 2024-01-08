@@ -8,9 +8,12 @@
 <PageTitle>@Title</PageTitle>
 @inject IHubContext<PersonHub> hubContext
 <h3>@Title</h3>
+
 <a href="/persons" class="btn btn-outline-dark">Show All</a>
 <div class="row">
     <div class="col-md-6">
+        <Toasts Style="margin-top:10px" class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
+
        <EditForm Model="@person" OnValidSubmit="Save">
            <DataAnnotationsValidator/>
           
@@ -38,6 +41,18 @@
 </div>
 
 @code {
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+    => new ToastMessage
+        {
+            Type = toastType,
+            Title = "Blazor Bootstrap",
+            HelpText = $"{DateTime.Now}",
+            Message = $"Thêm gòi nha. Thời gian: {DateTime.Now}",
+        };
     [Parameter]
     public int UserId { get; set; }
     private string message = string.Empty;
@@ -54,6 +69,7 @@
 
             // Broadcast the change to other clients
             await hubContext.Clients.All.SendAsync("ReceivePersons", await personService.GetAllAsync());
+            ShowMessage(ToastType.Success);
         }
         else
         {
