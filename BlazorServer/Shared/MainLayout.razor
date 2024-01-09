@@ -1,68 +1,63 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenSidebarToggle Click="@(() => sidebar1Expanded = !sidebar1Expanded)" />
+            <RadzenLabel Text="Header" />
+            <div class="flex-grow-1"></div>
 
-<div class="bb-page">
-
-    <Sidebar @ref="sidebar"
-             IconName="IconName.BootstrapFill"
-             Title="Blazor Bootstrap"
-             DataProvider="SidebarDataProvider" />
-
-    <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            <div class="py-2">
-                <div>
-                    <Breadcrumb style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" Items="NavItems2"></Breadcrumb>
-                </div>
-                @Body
+            <div class="d-flex align-items-center">
+                <RadzenProfileMenu>
+                    <Template>
+                        <RadzenGravatar Email="user@example.com">
+                        </RadzenGravatar>
+                    </Template>
+                    <ChildContent>
+                        @if (IsAuthenticated())
+                        {
+                            <RadzenProfileMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenProfileMenuItem>
+                            <RadzenProfileMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenProfileMenuItem>
+                            <RadzenProfileMenuItem Text="FileInput" Path="fileinput" Icon="attach_file"></RadzenProfileMenuItem>
+                        }
+                        else
+                        {
+                            <RadzenProfileMenuItem Text="Register" Path="Identity/Account/Register" Icon="perm_media"></RadzenProfileMenuItem>
+                            <RadzenProfileMenuItem Text="Login" Path="Identity/Account/Login" Icon="announcement"></RadzenProfileMenuItem>
+                        }
+                    </ChildContent>
+                </RadzenProfileMenu>
             </div>
-        </article>
-    </main>
+        </RadzenStack>
+    </RadzenHeader>
 
-</div>
+    <RadzenSidebar @bind-Expanded="@sidebar1Expanded">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Icon="home" Path="/" />
+            <RadzenPanelMenuItem Text="Users" Icon="cat" Path="/counter" />
+            <RadzenPanelMenuItem Text="Users" Icon="persons" Path="/persons" />
+        </RadzenPanelMenu>
 
-<Modal IsServiceModal="true" />
-<Preload />
-<Toasts class="p-3" AutoHide="true" Delay="4000" Placement="ToastsPlacement.TopRight" />
+        <div class="rz-p-4">
+            Sidebar
+        </div>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div class="rz-p-4">
+            @Body
+        </div>
+    </RadzenBody>
+    <RadzenFooter>
+        Footer
+    </RadzenFooter>
+</RadzenLayout>
 
 @code {
-    private List<BreadcrumbItem> NavItems2 { get; set; }
+    bool sidebar1Expanded = true;
 
-    protected override void OnInitialized()
+    private bool IsAuthenticated()
     {
-        NavItems2 = new List<BreadcrumbItem>
-        {
-            new BreadcrumbItem{ Text = "Home", Href ="/" },
-            new BreadcrumbItem{ Text = "counter", Href ="/counter" },
-            new BreadcrumbItem{ Text = "persons", Href ="/persons", IsCurrentPage = true }
-        };
-    }
-
-    private Sidebar sidebar = default!;
-    private IEnumerable<NavItem> navItems = default!;
-
-    private async Task<SidebarDataProviderResult> SidebarDataProvider(SidebarDataProviderRequest request)
-    {
-        if (navItems is null)
-            navItems = GetNavItems();
-
-        return await Task.FromResult(request.ApplyTo(navItems));
-    }
-
-    private IEnumerable<NavItem> GetNavItems()
-    {
-        navItems = new List<NavItem>
-        {
-            new NavItem { Id = "1", Href = "/", IconName = IconName.HouseDoorFill, Text = "Home", Match=NavLinkMatch.All},
-            new NavItem { Id = "2", Href = "/counter", IconName = IconName.PlusSquareFill, Text = "Counter"},
-            new NavItem { Id = "3", Href = "/fetchdata", IconName = IconName.Table, Text = "Fetch Data"},
-            new NavItem { Id = "4", Href = "/persons", IconName = IconName.Person, Text = "Person"},
-        };
-
-        return navItems;
+        var authState = AuthenticationStateProvider.GetAuthenticationStateAsync().Result;
+        return authState.User.Identity.IsAuthenticated;
     }
 }

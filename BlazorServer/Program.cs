@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.EntityFrameworkCore;
+using Radzen;
 namespace BlazorServer
 {
     public class Program
@@ -40,7 +41,7 @@ namespace BlazorServer
             builder.Services.AddBlazorBootstrap();
 
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-
+            builder.Services.AddRadzenComponents();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
