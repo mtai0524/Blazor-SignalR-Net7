@@ -1,5 +1,6 @@
 using BlazorCrud.Services;
 using BlazorServer.Areas.Identity;
+using BlazorServer.Areas.Services;
 using BlazorServer.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -42,6 +44,7 @@ namespace BlazorServer
 
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
             builder.Services.AddRadzenComponents();
+            builder.Services.AddTransient<IEmailSender, EmailSender>(); // thêm dịch vụ gửi mail xác nhận đăng kí
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

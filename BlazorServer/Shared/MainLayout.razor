@@ -10,8 +10,13 @@
             <div class="d-flex align-items-center">
                 <RadzenProfileMenu>
                     <Template>
-                        <RadzenGravatar Email="user@example.com">
-                        </RadzenGravatar>
+                        <div class="d-flex align-items-center">
+                            <div class="ml-4" style="margin-right:6px">
+                                <span>@UserName</span>
+                            </div>
+                            <RadzenGravatar Email="user@example.com">
+                            </RadzenGravatar>
+                        </div>
                     </Template>
                     <ChildContent>
                         @if (IsAuthenticated())
@@ -28,6 +33,7 @@
                     </ChildContent>
                 </RadzenProfileMenu>
             </div>
+
         </RadzenStack>
     </RadzenHeader>
 
@@ -54,6 +60,18 @@
 
 @code {
     bool sidebar1Expanded = true;
+    private string UserName { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            UserName = user.Identity.Name;
+        }
+    }
 
     private bool IsAuthenticated()
     {
