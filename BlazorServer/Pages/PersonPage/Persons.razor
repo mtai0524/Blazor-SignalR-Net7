@@ -13,18 +13,48 @@
     <Toasts Style="margin-top:10px"  class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
     <ConfirmDialog @ref="dialog" />
     <RadzenButton Text="Hi"></RadzenButton>
-    <RadzenDataGrid TItem="Person" AllowPaging="true" PageSize="10" Data="@persons">
+
+
+    <RadzenDataGrid AllowColumnPicking="true" PickedColumnsChanged="@PickedColumnsChanged" AllowSorting="true" AllowPaging="true" GridLines="Radzen.DataGridGridLines.Vertical" Data="@persons" TItem="Person" ColumnWidth="300px" AllowColumnResize="true" ColumnResized=@OnColumnResized>
+        
+        <EmptyTemplate>
+            <p style="font-weight:900;color: #262526; font-size: 24px; text-align: center; margin: 2rem;">Đang nạp dữ liệu, đợi xíu nghen!!</p>
+        </EmptyTemplate>
+        <HeaderTemplate>
+            <RadzenButton Text="Hiển thị id" Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) />
+        </HeaderTemplate>
         <Columns>
-            <!-- Các cột trong grid -->
-            <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" />
-            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" />
-            <!-- Thêm các cột khác nếu cần -->
+            <RadzenDataGridColumn Visible="@EmployeeIDVisible" TItem="Person" Title="STT" Width="80px" Frozen="true" TextAlign="TextAlign.Center" Reorderable="false" Resizable="false">
+                <Template Context="person">
+                    @((persons.IndexOf(person) + 1))
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" Width="150px" Resizable="true" />
+            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
         </Columns>
     </RadzenDataGrid>
+    
+
 </div>
 
 @code {
+    void PickedColumnsChanged(DataGridPickedColumnsChangedEventArgs<Person> args)
+    {
+    }
+    bool EmployeeIDVisible = false;
 
+    [Parameter]
+    public bool WithColumnPicker { get; set; } = false;
+ 
+    void OnColumnReordered(DataGridColumnReorderedEventArgs<Person> args)
+    {
+    }
+    void OnColumnResized(DataGridColumnResizedEventArgs<Person> args)
+    {
+    }
 
     private ConfirmDialog dialog;
 
