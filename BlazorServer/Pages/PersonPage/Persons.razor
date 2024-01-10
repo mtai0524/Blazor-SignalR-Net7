@@ -9,13 +9,19 @@
 @inject IHubContext<PersonHub> hubContext
 <h3>Persons</h3>
 <a href="/person/add" class="btn btn-outline-dark my-2">Add more</a>
+<RadzenButton Click="@PageAddNewPerson" Icon="add_circle_outline" Text="Add new" ButtonStyle="ButtonStyle.Secondary" />
+
 <div class="row">
     <Toasts Style="margin-top:10px"  class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
     <ConfirmDialog @ref="dialog" />
+    @* / thêm này mới chạy *@
+    <Preload/> 
     <RadzenButton Text="Hi"></RadzenButton>
 
 
-    <RadzenDataGrid AllowColumnPicking="true" PickedColumnsChanged="@PickedColumnsChanged" AllowSorting="true" AllowPaging="true" GridLines="Radzen.DataGridGridLines.Vertical" Data="@persons" TItem="Person" ColumnWidth="300px" AllowColumnResize="true" ColumnResized=@OnColumnResized>
+    <RadzenDataGrid AllowColumnPicking="true" PickedColumnsChanged="@PickedColumnsChanged" AllowSorting="true" AllowPaging="true"
+        GridLines="Radzen.DataGridGridLines.Vertical" Data="@persons" TItem="Person" ColumnWidth="300px" AllowColumnResize="true"
+        ColumnResized=@OnColumnResized>
         
         <EmptyTemplate>
             <p style="font-weight:900;color: #262526; font-size: 24px; text-align: center; margin: 2rem;">Đang nạp dữ liệu, đợi xíu nghen!!</p>
@@ -41,6 +47,7 @@
             <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
             <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
             <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+            <RadzenDataGridColumn TItem="Person" Property="Email" Title="Email" Width="150px" Resizable="true" />
         </Columns>
     </RadzenDataGrid>
     
@@ -48,6 +55,12 @@
 </div>
 
 @code {
+
+    private void PageAddNewPerson()
+    {
+        NavigationManager.NavigateTo("/person/add");
+    }
+
     void PickedColumnsChanged(DataGridPickedColumnsChangedEventArgs<Person> args)
     {
     }
@@ -182,4 +195,10 @@
             Console.WriteLine($"Error loading data: {ex.Message}");
         }
     }
+    public async ValueTask DisposeAsync()
+    {
+        // Ngắt kết nối SignalR khi component bị hủy
+        await hubConnection.DisposeAsync();
+    }
+
 }

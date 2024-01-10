@@ -5,6 +5,7 @@
 @using BlazorServer.Models
 @using Microsoft.AspNetCore.SignalR
 @inject IPersonService personService
+@inject NotificationService NotificationService
 <PageTitle>@Title</PageTitle>
 @inject IHubContext<PersonHub> hubContext
 <h3>@Title</h3>
@@ -12,7 +13,7 @@
 <a href="/persons" class="btn btn-outline-dark">Show All</a>
 <div class="row">
     <div class="col-md-6">
-        <Toasts Style="margin-top:10px" class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
+        <Toasts Style="margin-top:10px" class="pt-2" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
 
        <EditForm Model="@person" OnValidSubmit="Save">
            <DataAnnotationsValidator/>
@@ -25,7 +26,7 @@
 
             <div class="form-group">
                 <label for="Email">Email</label>
-                <InputText class="form-control" @bind-Value="person.Email" />
+                <InputText class="form-control" @bind-Value="person.Email" @oninput="OnEmailInput" />
                 <ValidationMessage For="@(()=>person.Email)" />
             </div>
 
@@ -34,13 +35,41 @@
             </div>
 
             <div class="my-2">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Gap="3rem" Wrap="FlexWrap.Wrap" class="rz-p-12">
+                    <RadzenButton style="width: 160px" Icon="save" BusyText="Saving ..." IsBusy=@busy Click=@OnBusyClick Text="Save" />
+                </RadzenStack>
             </div>
        </EditForm>
     </div>
 </div>
 
 @code {
+    private void OnEmailInput(ChangeEventArgs e)
+    {
+        string enteredEmail = e.Value?.ToString();
+
+        if (!enteredEmail.Contains("@"))
+        {
+            // Nếu người dùng không nhập @, thêm tự động @gmail.com
+            person.Email = $"{enteredEmail}@gmail.com";
+        }
+    }
+
+
+    bool busy;
+
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+
+    async Task OnBusyClick()
+    {
+        busy = true;
+        await Task.Delay(1000);
+        busy = false;
+        await Save();
+    }
     List<ToastMessage> messages = new List<ToastMessage>();
 
     private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
