@@ -26,7 +26,14 @@
         <Columns>
             <RadzenDataGridColumn Visible="@EmployeeIDVisible" TItem="Person" Title="STT" Width="80px" Frozen="true" TextAlign="TextAlign.Center" Reorderable="false" Resizable="false">
                 <Template Context="person">
-                    @((persons.IndexOf(person) + 1))
+                    @if (person.IsNew)
+                    {
+                        <span style="color: red;">New</span> // nen làm chỗ date time
+                    }
+                    else
+                    {
+                        @((persons.IndexOf(person) + 1))
+                    }
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" Width="150px" Resizable="true" />

@@ -11,6 +11,6 @@ namespace BlazorServer.Models
         public string? Name { get; set; }
         [Required, EmailAddress]
         public string? Email { get; set; }
-        public bool? IsNew { get; set; }
+        public bool IsNew { get; set; }
     }
 }

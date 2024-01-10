@@ -16,17 +16,26 @@ namespace BlazorCrud.Services
             try
             {
                 if (person.Id == 0)
+                {
+                    // Đặt IsNew thành true khi thêm mới
+                    person.IsNew = true;
+
                     _ctx.Person.Add(person);
+                }
                 else
+                {
                     _ctx.Person.Update(person);
+                }
+
                 _ctx.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
+
         public async Task<List<Person>> GetAllAsync()
         {
             // Lấy danh sách người từ cơ sở dữ liệu hoặc nguồn dữ liệu của bạn
