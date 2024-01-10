@@ -13,7 +13,14 @@
     <Toasts Style="margin-top:10px"  class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
     <ConfirmDialog @ref="dialog" />
     <RadzenButton Text="Hi"></RadzenButton>
-
+    <RadzenDataGrid TItem="Person" AllowPaging="true" PageSize="10" Data="@persons">
+        <Columns>
+            <!-- Các cột trong grid -->
+            <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" />
+            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" />
+            <!-- Thêm các cột khác nếu cần -->
+        </Columns>
+    </RadzenDataGrid>
 </div>
 
 @code {

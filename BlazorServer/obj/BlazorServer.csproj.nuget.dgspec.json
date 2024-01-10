@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\met moi\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj": {}
+    "E:\\blazor radzen\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj": {}
   },
   "projects": {
-    "E:\\met moi\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj": {
+    "E:\\blazor radzen\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\met moi\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
+        "projectUniqueName": "E:\\blazor radzen\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
         "projectName": "BlazorServer",
-        "projectPath": "E:\\met moi\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
+        "projectPath": "E:\\blazor radzen\\Blazor-SignalR-Net7\\BlazorServer\\BlazorServer.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\met moi\\Blazor-SignalR-Net7\\BlazorServer\\obj\\",
+        "outputPath": "E:\\blazor radzen\\Blazor-SignalR-Net7\\BlazorServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
