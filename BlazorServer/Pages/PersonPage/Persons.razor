@@ -11,51 +11,63 @@
 <a href="/person/add" class="btn btn-outline-dark my-2">Add more</a>
 <RadzenButton Click="@PageAddNewPerson" Icon="add_circle_outline" Text="Add new" ButtonStyle="ButtonStyle.Secondary" />
 
-<div class="row">
-    <Toasts Style="margin-top:10px"  class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
+<div class="container-fluid">
+    <Toasts Style="margin-top:10px" class="pt-5" Messages="messages" AutoHide="true" StackLength="3" Placement="ToastsPlacement.TopRight" ZIndex="999999999" />
     <ConfirmDialog @ref="dialog" />
     @* / thêm này mới chạy *@
-    <Preload/> 
+    <Preload />
     <RadzenButton Text="Hi"></RadzenButton>
+    <div class="row px-3">
+        <div class="col-md-6 p-3">
+            <RadzenDataGrid AllowColumnPicking="true" PickedColumnsChanged="@PickedColumnsChanged" AllowSorting="true" AllowPaging="true"
+                            GridLines="Radzen.DataGridGridLines.Vertical" Data="@persons" TItem="Person" ColumnWidth="300px" AllowColumnResize="true"
+                            ColumnResized=@OnColumnResized>
 
+                <EmptyTemplate>
+                    <p style="font-weight:900;color: #262526; font-size: 24px; text-align: center; margin: 2rem;">Đang nạp dữ liệu, đợi xíu nghen!!</p>
+                </EmptyTemplate>
+                <HeaderTemplate>
+                    <RadzenButton Text="Hiển thị id" Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) />
+                </HeaderTemplate>
+                <Columns>
+                    <RadzenDataGridColumn Visible="@EmployeeIDVisible" TItem="Person" Title="STT" Width="80px" Frozen="true" TextAlign="TextAlign.Center" Reorderable="false" Resizable="false">
+                        <Template Context="person">
+                            @if (person.IsNew)
+                            {
+                                <span style="color: red;">New</span>
+                                // nen làm chỗ date time
+                            }
+                            else
+                            {
+                                @((persons.IndexOf(person) + 1))
+                            }
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" Width="150px" Resizable="true" />
+                    <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+                    <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+                    <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+                    <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
+                    <RadzenDataGridColumn TItem="Person" Property="Email" Title="Email" Width="150px" Resizable="true" />
+                </Columns>
+            </RadzenDataGrid>
+        </div>
+        <div class="col-md-6 p-3">
 
-    <RadzenDataGrid AllowColumnPicking="true" PickedColumnsChanged="@PickedColumnsChanged" AllowSorting="true" AllowPaging="true"
-        GridLines="Radzen.DataGridGridLines.Vertical" Data="@persons" TItem="Person" ColumnWidth="300px" AllowColumnResize="true"
-        ColumnResized=@OnColumnResized>
-        
-        <EmptyTemplate>
-            <p style="font-weight:900;color: #262526; font-size: 24px; text-align: center; margin: 2rem;">Đang nạp dữ liệu, đợi xíu nghen!!</p>
-        </EmptyTemplate>
-        <HeaderTemplate>
-            <RadzenButton Text="Hiển thị id" Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) />
-        </HeaderTemplate>
-        <Columns>
-            <RadzenDataGridColumn Visible="@EmployeeIDVisible" TItem="Person" Title="STT" Width="80px" Frozen="true" TextAlign="TextAlign.Center" Reorderable="false" Resizable="false">
-                <Template Context="person">
-                    @if (person.IsNew)
-                    {
-                        <span style="color: red;">New</span> // nen làm chỗ date time
-                    }
-                    else
-                    {
-                        @((persons.IndexOf(person) + 1))
-                    }
-                </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="Person" Property="Id" Title="ID" Width="150px" Resizable="true" />
-            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
-            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
-            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
-            <RadzenDataGridColumn TItem="Person" Property="Name" Title="Name" Width="150px" Resizable="true" />
-            <RadzenDataGridColumn TItem="Person" Property="Email" Title="Email" Width="150px" Resizable="true" />
-        </Columns>
-    </RadzenDataGrid>
-    
-
+            <RadzenCard>
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Single file upload</RadzenText>
+                <RadzenUpload Url="upload/single" Progress=@(args => OnProgress(args, "Single file upload")) class="w-100" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "select file" }})">
+                </RadzenUpload>
+            </RadzenCard>
+        </div>
+    </div>
 </div>
 
 @code {
+    void OnProgress(UploadProgressArgs args, string name)
+    {
 
+    }
     private void PageAddNewPerson()
     {
         NavigationManager.NavigateTo("/person/add");
@@ -68,7 +80,7 @@
 
     [Parameter]
     public bool WithColumnPicker { get; set; } = false;
- 
+
     void OnColumnReordered(DataGridColumnReorderedEventArgs<Person> args)
     {
     }
